@@ -1,7 +1,7 @@
 import pandas as pd
 
 # Read the CSV file
-df = pd.read_csv('raw_data.csv')
+df = pd.read_csv('../data/raw_data.csv')
 
 # Set the column names
 df.columns = ['PART_SEG', 'PART_NUMBER', 'PART_DESCRIPTION','PART_PRICE']
@@ -15,7 +15,7 @@ df['PART_CATEGORY'] = ''
 df = df[['PART_NUMBER', 'PART_SEG', 'PART_DESCRIPTION','PART_CATEGORY']]
 
 # Save to updated CSV
-df.to_csv('dataset.csv', index=False)
+df.to_csv('../data/dataset.csv', index=False)
 
 
 print("Changed Column order: PART_NUMBER, PART_SEG, PART_DESCRIPTION, PART_CATEGORY")

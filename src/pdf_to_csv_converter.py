@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+from pandas.core.frame import DataFrame
+
+
 import argparse
 import os
 import sys
@@ -80,7 +83,7 @@ def write_tables_to_csv(tables: List[pd.DataFrame], output: str, merge: bool) ->
 	if merge:
 		# Concatenate with blank row separators to preserve per-table separation
 		frames: List[pd.DataFrame] = []
-		for i, df in enumerate(tables):
+		for i, df in enumerate[DataFrame](tables):
 			frames.append(df)
 			# Add a separator row between tables except after the last one
 			if i < len(tables) - 1:
@@ -97,7 +100,7 @@ def write_tables_to_csv(tables: List[pd.DataFrame], output: str, merge: bool) ->
 def main() -> None:
 	parser = argparse.ArgumentParser(description="Extract tables from a PDF into CSV.")
 	parser.add_argument("pdf", help="Path to the input PDF file")
-	parser.add_argument("-o", "--output", default="output.csv", help="Output CSV path or prefix (for multiple files)")
+	parser.add_argument("-o", "--output", default="../data/raw_data.csv", help="Output CSV path or prefix (for multiple files)")
 	parser.add_argument("-p", "--pages", default=None, help="Pages to extract, e.g. '1', '1-3', '1,3,5'")
 	parser.add_argument("-s", "--split", action="store_true", help="Write each detected table to a separate CSV file")
 	args = parser.parse_args()
