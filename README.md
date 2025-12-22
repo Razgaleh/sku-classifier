@@ -302,14 +302,4 @@ The evaluation script provides:
 
 See `requirements.txt` for version details.
 
-## License
 
-[Specify your license here]
-
-## Contributing
-
-[Add contribution guidelines if applicable]
-
-## Contact
-
-[Add contact information if needed]
