@@ -20,10 +20,6 @@ env/
 .env.*
 !.env.example
 
-# Data files (can be generated or are large)
-data/*.csv
-data/*.pdf
-data/*.png
 
 # Jupyter Notebook
 .ipynb_checkpoints
