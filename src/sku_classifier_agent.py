@@ -7,15 +7,15 @@ from typing_extensions import TypedDict
 
 from langgraph.graph import StateGraph, START, END
 from langgraph.graph.message import add_messages
-from langchain_ollama import ChatOllama
+from langchain_core.messages import HumanMessage
 from IPython.display import Image, display
 from langchain_community.tools import BraveSearch
 from langgraph.prebuilt import ToolNode, tools_condition
 from langgraph.checkpoint.memory import InMemorySaver
+from langchain_nvidia_ai_endpoints import ChatNVIDIA
 
-os.environ["CUDA_VISIBLE_DEVICES"] = "0,1"  # Use both GPUs
-os.environ["OLLAMA_NUM_PARALLEL"] = "2"     # Parallel processing
 
+os.environ["NVIDIA_API_KEY"] = os.getenv("NVIDIA_API_KEY")    
 os.environ["LANGSMITH_API_KEY"]= os.getenv("LANGSMITH_API_KEY")
 os.environ["LANGSMITH_ENDPOINT"]="https://api.smith.langchain.com"
 os.environ["LANGSMITH_TRACING"]="true"
@@ -33,13 +33,13 @@ class State(TypedDict):
 
 graph_builder = StateGraph(State)
 
-llm = ChatOllama(model='llama3.1:8b',   
-                 options={
-                    'num_gpu': 2,           # Use both GPUs
-                    'num_ctx': 4096,        # Larger context window
-                    'num_thread': 8,         # CPU threads
-                    'num_batch': 512,       # Batch size for processing
-    })
+# Connect to local NVIDIA NIM instance
+# Set base_url to your NIM endpoint (default: http://localhost:8000/v1)
+# For hosted NIMs, remove base_url to use NVIDIA's cloud API
+llm = ChatNVIDIA(
+    base_url="http://localhost:8000/v1", 
+    model="meta-llama/llama-3.1-8b-instruct"  # Model name from NIM (use meta-llama with dash)
+)
 
 tool = BraveSearch.from_search_kwargs(search_kwargs={"count": 3})
 tools = [tool]
@@ -73,7 +73,7 @@ def classify_part(part_number: str, part_seg: str, part_description: str) -> str
     config = {"configurable": {"thread_id": f"classify_{part_number}"}}
     
     # Create a temporary state for this classification
-    temp_state = {"messages": [{"role": "user", "content": classification_prompt}]}
+    temp_state = {"messages": [HumanMessage(content=classification_prompt)]}
     
     # Use invoke instead of stream to get final result without generator issues
     try:
@@ -108,9 +108,9 @@ graph_builder.add_conditional_edges(
 )
 
 
-
+graph_builder.add_edge(START, "chatbot")
 graph_builder.add_edge("tools", "chatbot")
-graph_builder.set_entry_point("chatbot")
+
 memory = InMemorySaver()
 graph = graph_builder.compile(checkpointer=memory)
 
