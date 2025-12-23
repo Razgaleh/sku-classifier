@@ -4,17 +4,18 @@ An intelligent agent that automatically classifies SKU (Stock Keeping Unit) part
 
 ## Overview
 
-The SKU Classifier Agent is a LangGraph-based system that processes product information (part numbers, descriptions, and segments) and classifies them into hardware or software categories. It leverages Ollama's Llama 3.1 model with web search integration via Brave Search API to make informed classification decisions.
+The SKU Classifier Agent is a LangGraph-based system that processes product information (part numbers, descriptions, and segments) and classifies them into hardware or software categories. It leverages NVIDIA NIM (NVIDIA Inference Microservices) running Meta's Llama 3.1 8B Instruct model locally with web search integration via Brave Search API to make informed classification decisions.
 
 ## Features
 
-- 🤖 **AI-Powered Classification**: Uses Llama 3.1 (8B) model for intelligent part classification
+- 🤖 **AI-Powered Classification**: Uses Meta's Llama 3.1 8B Instruct model via NVIDIA NIM for intelligent part classification
+- 🚀 **Local NVIDIA NIM Deployment**: Run inference locally with optimized NVIDIA microservices
 - 🔍 **Web Search Integration**: Automatically searches the web when additional product information is needed
 - 📊 **Batch Processing**: Process entire CSV files or test on sample data
 - 📈 **Evaluation Metrics**: Built-in evaluation script with accuracy, precision, recall, and F1-score
 - 🔄 **Fallback Logic**: Keyword-based fallback classification if LLM fails
 - 📁 **CSV Support**: Easy import/export of classification results
-- 🎯 **Multi-GPU Support**: Configured for parallel processing with multiple GPUs
+- ⚡ **High-Performance Inference**: Optimized for low latency and high throughput with NVIDIA hardware
 
 ## Project Structure
 
@@ -66,17 +67,30 @@ The agent:
 3. Optionally performs web searches for additional context
 4. Returns classification: **HARDWARE** or **SOFTWARE**
 
+### Why NVIDIA NIM?
+
+NVIDIA NIM (NVIDIA Inference Microservices) provides several advantages for production deployment:
+
+- **Optimized Performance**: Pre-built containers optimized for NVIDIA GPUs with TensorRT-LLM
+- **Easy Deployment**: Deploy locally or in the cloud with a single Docker command
+- **Enterprise-Ready**: Production-grade inference with built-in monitoring and scaling
+- **Compatibility**: Works with LangChain and other popular frameworks
+- **Flexibility**: Switch between local deployment and cloud API with minimal code changes
+- **Cost-Effective**: Run inference locally to reduce API costs for high-volume workloads
+
 ## Installation
 
 ### Prerequisites
 
 - Python 3.8+
-- CUDA-capable GPUs (optional, for GPU acceleration)
-- Ollama installed and running with Llama 3.1:8b model
+- CUDA-capable NVIDIA GPU (recommended for optimal performance)
+- Docker (for running NVIDIA NIM container)
+- NVIDIA Container Toolkit (for GPU access in Docker)
+- NVIDIA API Key (get from [NVIDIA AI](https://build.nvidia.com/))
 
 ### Setup
 
-1. **Clone the repository**:
+1. **Clone the repository** (or navigate to the project directory):
    ```bash
    git clone https://github.com/Razgaleh/sku-classifier
    cd sku-classifier
@@ -87,16 +101,31 @@ The agent:
    pip install -r requirements.txt
    ```
 
-3. **Install and setup Ollama**:
-   ```bash
-   # Install Ollama (if not already installed)
-   curl -fsSL https://ollama.com/install.sh | sh
+3. **Set up NVIDIA NIM (Local Deployment)**:
    
-   # Pull the required model
-   ollama pull llama3.1:8b
+   Pull and run the NVIDIA NIM container with Llama 3.1 8B Instruct model:
+   
+   ```bash
+   # Login to NVIDIA NGC (you'll need an NGC API key)
+   docker login nvcr.io
+   
+   # Pull the NIM container for Llama 3.1 8B Instruct
+   docker pull nvcr.io/nim/meta/llama-3.1-8b-instruct:latest
+   
+   # Run the NIM container (exposing port 8000)
+   docker run -d \
+     --gpus all \
+     --shm-size=16GB \
+     -e NGC_API_KEY=$NGC_API_KEY \
+     -v "$HOME/.cache/nim:/opt/nim/.cache" \
+     -p 8000:8000 \
+     nvcr.io/nim/meta/llama-3.1-8b-instruct:latest
    ```
+   
+   The NIM service will be available at `http://localhost:8000/v1`
 
 4. **Set up environment variables**:
+   Create a `.env` file or export the following environment variables:
    ```bash
    # Copy the example environment file
    cp .env.example .env
@@ -105,24 +134,39 @@ The agent:
    nano .env
    ```
 
-   Required API keys:
+   - **NVIDIA API Key**: Get from [NVIDIA AI](https://build.nvidia.com/) (required for NIM authentication)
    - **LangSmith API Key**: Get from [LangSmith](https://smith.langchain.com/) (optional, for tracing)
    - **Brave Search API Key**: Get from [Brave Search API](https://brave.com/search/api/) (required for web search)
+   
+   Example `.env` file:
+   ```bash
+   NVIDIA_API_KEY=your_nvidia_api_key_here
+   LANGSMITH_API_KEY=your_langsmith_key_here
+   BRAVE_SEARCH_API_KEY=your_brave_search_key_here
+   ```
 
 ## Configuration
 
 The system is configured in `src/sku_classifier_agent.py`:
 
-- **GPU Configuration**: Uses GPUs 0 and 1 by default (modify `CUDA_VISIBLE_DEVICES` if needed)
-- **Model**: Llama 3.1:8b (change `model='llama3.1:8b'` to use a different model)
-- **Context Window**: 4096 tokens
-- **Batch Size**: 512
+- **NIM Endpoint**: Local deployment at `http://localhost:8000/v1` (lines 39-42)
+- **Model**: `meta-llama/llama-3.1-8b-instruct` (change to use different NIM-supported models)
+- **LLM Provider**: `ChatNVIDIA` from `langchain_nvidia_ai_endpoints`
+- **Tools**: BraveSearch with count=3 results per query
+
+To use NVIDIA's cloud API instead of local NIM:
+```python
+# Remove the base_url parameter to use cloud API
+llm = ChatNVIDIA(
+    model="meta-llama/llama-3.1-8b-instruct"
+)
+```
 
 ## Usage
 
 ### Main Classifier
 
-Run the main classifier agent from the `src/` directory:
+Run the main classifier agent:
 
 ```bash
 cd src
@@ -161,9 +205,9 @@ Options:
 - `-p, --pages`: Pages to extract, e.g., '1', '1-3', '1,3,5'
 - `-s, --split`: Write each table to a separate CSV file
 
-#### 2. Clean Raw Data
+#### Clean Raw Data
 
-Prepare your raw data for classification:
+Prepare your raw data CSV file:
 
 ```bash
 cd src
@@ -196,11 +240,7 @@ cd src
 python sku_classifier_agent.py
 ```
 
-Select option 2 to process the full dataset.
-
-#### 4. Evaluate Results
-
-Evaluate classification accuracy against ground truth:
+Evaluate classification results against ground truth:
 
 ```bash
 cd src
@@ -270,30 +310,46 @@ The evaluation script provides:
 
 ### Common Issues
 
-1. **Ollama not found**:
-   - Ensure Ollama is installed and running: `ollama serve`
-   - Verify model is available: `ollama list`
+1. **NIM Container not running**:
+   - Check if the container is running: `docker ps | grep nim`
+   - View container logs: `docker logs <container_id>`
+   - Ensure port 8000 is not already in use: `lsof -i :8000`
+   - Restart the NIM container if needed
 
-2. **CUDA/GPU errors**:
-   - If you don't have GPUs, modify `CUDA_VISIBLE_DEVICES` in the script
-   - Set `num_gpu: 0` in the LLM options for CPU-only mode
+2. **Connection to NIM fails**:
+   - Verify NIM is accessible: `curl http://localhost:8000/v1/health`
+   - Check the base_url in `sku_classifier_agent.py` matches your NIM endpoint
+   - Ensure firewall/network settings allow localhost connections
 
-3. **API Key errors**:
-   - Verify environment variables are set: `echo $BRAVE_SEARCH_API_KEY`
+3. **CUDA/GPU errors**:
+   - Verify NVIDIA drivers are installed: `nvidia-smi`
+   - Ensure Docker has GPU access: `docker run --rm --gpus all nvidia/cuda:11.8.0-base-ubuntu22.04 nvidia-smi`
+   - Check NVIDIA Container Toolkit is installed properly
+
+4. **API Key errors**:
+   - Verify environment variables are set: `echo $NVIDIA_API_KEY`
+   - Get your NVIDIA API key from [NVIDIA AI](https://build.nvidia.com/)
    - LangSmith API key is optional but recommended for debugging
+   - Brave Search API key is required for web search functionality
 
-4. **Import errors**:
+5. **Import errors**:
    - Install all dependencies: `pip install -r requirements.txt`
    - Ensure you're using Python 3.8+
+   - Try upgrading pip: `pip install --upgrade pip`
 
-5. **Path errors**:
+6. **Path errors**:
    - Make sure you're running scripts from the `src/` directory
    - Or use absolute paths when specifying file locations
+
+7. **Model loading issues**:
+   - Ensure sufficient disk space for model cache (~20GB)
+   - Check Docker container has enough shared memory (--shm-size=16GB)
+   - Verify model is compatible with your GPU's compute capability
 
 ## Dependencies
 
 - `langgraph` - Agent workflow framework
-- `langchain-ollama` - Ollama LLM integration
+- `langchain-nvidia-ai-endpoints` - NVIDIA NIM integration
 - `langchain-community` - Community tools (Brave Search)
 - `langsmith` - Tracing and monitoring (optional)
 - `pandas` - Data manipulation

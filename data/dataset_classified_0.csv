@@ -1,0 +1,112 @@
+PART_NUMBER,PART_SEG,PART_DESCRIPTION,PART_CATEGORY
+PAN-PA-200,PALO,Palo Alto Networks PA-200,HARDWARE
+PAN-PA-200-AUS,PALO,Palo Alto Networks PA-200 with Australia power cord,HARDWARE
+PAN-PA-200-EU,PALO,Palo Alto Networks PA-200 with EU power cord,HARDWARE
+PAN-PA-200-JP,PALO,Palo Alto Networks PA-200 with Japan power cord,HARDWARE
+PAN-PA-200-SUI,PALO,Palo Alto Networks PA-200 with Suise power cord,HARDWARE
+PAN-PA-200-TW,PALO,Palo Alto Networks PA-200 with Taiwan power cord,HARDWARE
+PAN-PA-200-UK,PALO,Palo Alto Networks PA-200 with UK power cord,HARDWARE
+PAN-PA-200E,PALO,"Palo Alto Networks PA-200, Enterprise",HARDWARE
+PAN-PA-200E-AUS,PALO,"Palo Alto Networks PA-200 with Australia power cord, Enterprise",HARDWARE
+PAN-PA-200E-EU,PALO,"Palo Alto Networks PA-200 with EU power cord, Enterprise",HARDWARE
+PAN-PA-200E-JP,PALO,"Palo Alto Networks PA-200 with Japan power cord, Enterprise",HARDWARE
+PAN-PA-200E-SUI,PALO,"Palo Alto Networks PA-200 with Suise power cord, Enterprise",HARDWARE
+PAN-PA-200E-TW,PALO,"Palo Alto Networks PA-200 with Taiwan power cord, Enterprise",HARDWARE
+PAN-PA-200E-UK,PALO,"Palo Alto Networks PA-200 with UK power cord, Enterprise, Enterprise",HARDWARE
+PAN-PA-220,PALO,Palo Alto Networks PA-220,HARDWARE
+PAN-PA-500-2GB,PALO,Palo Alto Networks PA-500 2GB Memory,HARDWARE
+PAN-PA-500-UPG-2GB,PALO,2GB Memory Upgrade Kit for PA-500 Only. Cannot be installed on a PA-500-2GB (this unit already has 2GB memory).,HARDWARE
+PAN-PA-820,PALO,Palo Alto Networks PA-820,HARDWARE
+PAN-PA-850,PALO,Palo Alto Networks PA-850,HARDWARE
+PAN-PA-3020,PALO,Palo Alto Networks PA-3020,HARDWARE
+PAN-PA-3050,PALO,Palo Alto Networks PA-3050,HARDWARE
+PAN-PA-3060,PALO,Palo Alto Networks PA-3060,HARDWARE
+PAN-PA-5020-SSD2-D,PALO,Redundant AC power supply and dual 240GB SSD drive,HARDWARE
+PAN-PA-5020-NEBS-D,PALO,AC version of NEBS Compliant Palo Alto Networks PA-5020 with redundant AC power supplies and dual 240GB SSD drive,HARDWARE
+PAN-PA-5020-DC-NEBS-D,PALO,DC Version of NEBS Compliant Palo Alto Networks PA-5020 with redundant DC power supplies and dual 240GB SSD drive,HARDWARE
+PAN-PA-5050-DC-NEBS-D,PALO,DC version of NEBS Compliant Palo Alto Networks PA-5050 with redundant DC power supplies and dual 240GB SSD drive,HARDWARE
+PAN-PA-5050-NEBS-D,PALO,AC version of NEBS Compliant Palo Alto Networks PA-5050 with redundant AC power supplies and dual 240GB SSD drive,HARDWARE
+PAN-PA-5050-SSD2-D,PALO,Redundant AC power supply and dual 240GB SSD drive,HARDWARE
+PAN-PA-5060-DC-NEBS-D,PALO,DC version of NEBS Compliant Palo Alto Networks PA-5060 with redundant DC power supplies and dual 240GB SSD drive,HARDWARE
+PAN-PA-5060-NEBS-D,PALO,AC version of NEBS Compliant Palo Alto Networks PA-5060 with redundant AC power supplies and dual 240GB SSD drive,HARDWARE
+PAN-PA-5060-SSD2-D,PALO,Redundant AC power supply and dual 240GB SSD drive,HARDWARE
+PAN-PA-5220-AC,PALO,Palo Alto Networks PA-5220 with redundant AC power supplies,HARDWARE
+PAN-PA-5220-DC,PALO,Palo Alto Networks PA-5220 with redundant DC power supplies,HARDWARE
+PAN-PA-5250-AC,PALO,Palo Alto Networks PA-5250 with redundant AC power supplies,HARDWARE
+PAN-PA-5250-DC,PALO,Palo Alto Networks PA-5250 with redundant DC power supplies,HARDWARE
+PAN-PA-5260-AC,PALO,Palo Alto Networks PA-5260 with redundant AC power supplies,HARDWARE
+PAN-PA-5260-DC,PALO,Palo Alto Networks PA-5260 with redundant DC power supplies,HARDWARE
+PAN-PA-7000-20G-NPC,PALO,"PA-7000 Network Processing Card with 12x10/100/1000 RJ-45 Ethernet, 8x1GbE SFP and 4x10GbE SFP+, 4M sessions.",HARDWARE
+PAN-PA-7000-20GQ-NPC,PALO,"PA-7000 Network Processing Card with 12x10GbE SFP+ and 2x40GbE QSFP+ interfaces, 4M sessions.",HARDWARE
+PAN-PA-7000-20GXM-NPC,PALO,"PA-7000 Network Processing Card with 12x10/100/1000 RJ-45 Ethernet, 8x1GbE SFP and 4x10GbE SFP+, 8M sessions, Extended
+memory.",HARDWARE
+PAN-PA-7000-20GQXM-NPC,PALO,"PA-7000 Network Processing Card with 12x10GbE SFP+ and 2x40GbE QSFP+ interfaces, 8M sessions, Extended memory.",HARDWARE
+PAN-PA-7050-AC,PALO,"PA-7050 Base AC Hardware Bundle. Includes AC Chassis, 4xAC power supplies, 2xFan Trays, Fan Filter, Switch Management Card, Log
+Processing Card, and 4xAMC cards",HARDWARE
+PAN-PA-7050-DC,PALO,"A-7050 Base DC Hardware Bundle. Includes DC Chassis, 4xDC power supplies, 2xFan Trays, Fan Filter, Switch Management Card, Log
+Processing Card, and 4xAMC cards",HARDWARE
+PAN-PA-7080-AC,PALO,"PA-7080 Base AC Hardware Bundle. Includes AC Chassis, 4xAC power supplies, 2xFan Trays, Fan Filter, Switch Management Card, Log
+Processing Card, and 4xAMC cards",HARDWARE
+PAN-PA-7080-DC,PALO,"PA-7080 Base DC Hardware Bundle. Includes DC Chassis, 4xDC power supplies, 2xFan Trays, Fan Filter, Switch Management Card, Log
+Processing Card, and 4xAMC cards",HARDWARE
+PAN-PRA-25,PALO,"Panorama central management software, 25 devices",SOFTWARE
+PAN-PRA-100,PALO,"Panorama central management software, 100 devices",SOFTWARE
+PAN-PRA-1000,PALO,"Panorama central management software, 1000 devices",SOFTWARE
+PAN-PRA-UPG-100,PALO,"Panorama upgrade, 25 to 100 devices",SOFTWARE
+PAN-PRA-UPG-1K,PALO,"Panorama upgrade, 100 to 1000 devices",SOFTWARE
+PAN-M-100,PALO,"Palo Alto Networks M-100, 1TB RAID storage (2 1TB RAID certified drives preinstalled). Rack mount rails included.",HARDWARE
+PAN-M-100-4TB,PALO,"Palo Alto Networks M-100, 4TB RAID storage (8 1TB RAID certified drives preinstalled). Rack mount rails included.",HARDWARE
+PAN-M-100-UPG-32GB,PALO,32GB Memory Upgrade Kit for M-100 Only. One per system. Replaces the existing memory.,HARDWARE
+PAN-M-P-25,PALO,"Panorama central management software license, 25 devices or log collector for the M-100",SOFTWARE
+PAN-M-P-100,PALO,"Panorama central management software license, 100 devices for the M-100",SOFTWARE
+PAN-M-P-1K,PALO,"Panorama central management software license, 1000 devices for the M-100",SOFTWARE
+PAN-M-P-MIG-25,PALO,"Panorama license migration from PRA-25 to M-100, 25 devices or log collector",SOFTWARE
+PAN-M-P-MIG-100,PALO,"Panorama license migration from PRA-100 to M-100, 100 devices",SOFTWARE
+PAN-M-P-MIG-1K,PALO,"Panorama license migration from PRA-1K to M-100, 1K devices",SOFTWARE
+PAN-M-P-UPG-100,PALO,"Panorama license upgrade, 25 to 100 devices for the M-100",SOFTWARE
+PAN-M-P-UPG-1K,PALO,"Panorama license upgrade, 100 to 1000 devices for the M-100",SOFTWARE
+PAN-M-500,PALO,Palo Alto Networks M-500 chassis with 4TB storage (4x2TB RAID certified drives) and 4 post rack mount rails,HARDWARE
+PAN-M-500-P-25,PALO,"Panorama central management software license, 25 devices or log collector for the M-500",SOFTWARE
+PAN-M-500-P-100,PALO,"Panorama central management software license, 100 devices for the M-500",SOFTWARE
+PAN-M-500-P-1K,PALO,"Panorama central management software license, 1000 devices for the M-500",SOFTWARE
+PAN-M-500-P-MIG-25,PALO,"Panorama license migration from PRA-25 to M-500, 25 devices or log collector",SOFTWARE
+PAN-M-500-P-MIG-100,PALO,"Panorama license migration from PRA-100 to M-500, 100 devices",SOFTWARE
+PAN-M-500-P-MIG-1K,PALO,"Panorama license migration from PRA-1K to M-500, 1K devices",SOFTWARE
+PAN-M-MIG-M100-M500-25,PALO,"Panorama license migration from M-100 to M-500, 25 devices or log collector",SOFTWARE
+PAN-M-MIG-M100-M500-100,PALO,"Panorama license migration from M-100 to M-500, 100 devices",SOFTWARE
+PAN-M-MIG-M100-M500-1K,PALO,"Panorama license migration from M-100 to M-500, 1K devices",SOFTWARE
+PAN-M-500-P-UPG-100,PALO,"Panorama license upgrade, 25 to 100 devices for the M-500",SOFTWARE
+PAN-M-500-P-UPG-1K,PALO,"Panorama license upgrade, 100 to 1K devices for the M-500",SOFTWARE
+PAN-VM-100,PALO,Palo Alto Networks VM-100,SOFTWARE
+PAN-VM-100-ENT,PALO,"Palo Alto Networks VM-100 Enterprise, quantity 25",HARDWARE
+PAN-VM-200,PALO,Palo Alto Networks VM-200,HARDWARE
+PAN-VM-200-ENT,PALO,"Palo Alto Networks VM-200, quanity 25",HARDWARE
+PAN-VM-300,PALO,Palo Alto Networks VM-300,SOFTWARE
+PAN-VM-300-ENT,PALO,"Palo Alto Networks VM-300, quantity 25",SOFTWARE
+PAN-VM-1000-HV,PALO,Palo Alto Networks VM-1000-HV,SOFTWARE
+PAN-VM-1000-HV-ENT,PALO,"Palo Alto Networks VM-1000-HV-ENT, quantity 25",HARDWARE
+PAN-VM-50-PERP-BASC-PREM-1YR,PALO,Palo Alto Networks Perpetual Bundle (Basic) for VM-Series that includes VM-50 and Premium Support,SOFTWARE
+PAN-VM-50-PERP-BASC-PREM-1YR-R,PALO,"Palo Alto Networks Perpetual Bundle (Basic) for VM-Series that includes Premium Support, 1 year, Renewal",SOFTWARE
+PAN-VM-50-PERP-BASC-PREM-3YR,PALO,"Palo Alto Networks Perpetual Bundle (Basic) for VM-Series that includes VM-50 and Premium Support, 3 year",SOFTWARE
+PAN-VM-50-PERP-BASC-PREM-3YR-R,PALO,"Palo Alto Networks Perpetual Bundle (Basic) for VM-Series that includes Premium Support, 3 year, Renewal",SOFTWARE
+PAN-VM-50-PERP-BASC-PREM-5YR,PALO,"Palo Alto Networks Perpetual Bundle (Basic) for VM-Series that includes VM-50 and Premium Support, 5 year",SOFTWARE
+PAN-VM-50-PERP-BASC-PREM-5YR-R,PALO,"Palo Alto Networks Perpetual Bundle (Basic) for VM-Series that includes Premium Support, 5 year, Renewal",SOFTWARE
+PAN-VM-50-PERP-BASC-PREMUSG-1YR,PALO,Palo Alto Networks Perpetual Bundle (Basic) for VM-Series that includes VM-50 and US Government Premium Support,SOFTWARE
+,PALO,,HARDWARE
+PAN-VM-50-PERP-BASC-PREMUSG-1YR-R,PALO,"Palo Alto Networks Perpetual Bundle (Basic) for VM-Series that includes US Government Premium Support, 1 year, Renewal",SOFTWARE
+PAN-VM-50-PERP-BASC-PREMUSG-3YR,PALO,"Palo Alto Networks Perpetual Bundle (Basic) for VM-Series that includes VM-50 and US Government Premium Support, 3 year",SOFTWARE
+PAN-VM-50-PERP-BASC-PREMUSG-3YR-R,PALO,"Palo Alto Networks Perpetual Bundle (Basic) for VM-Series that includes US Government Premium Support, 3 year, Renewal",SOFTWARE
+PAN-VM-50-PERP-BASC-PREMUSG-5YR,PALO,"Palo Alto Networks Perpetual Bundle (Basic) for VM-Series that includes VM-50 and US Government Premium Support, 5 year",SOFTWARE
+PAN-VM-50-PERP-BASC-PREMUSG-5YR-R,PALO,"Palo Alto Networks Perpetual Bundle (Basic) for VM-Series that includes US Government Premium Support, 5 year, Renewal",SOFTWARE
+PAN-VM-50-PERP-BND1-PREM-1YR,PALO,"Palo Alto Networks Perpetual Bundle (BND1) for VM-Series that includes VM-50, Threat Prevention subscription, and Premium
+Support",SOFTWARE
+PAN-VM-50-PERP-BND1-PREM-1YR-R,PALO,"Palo Alto Networks Perpetual Bundle (BND1) for VM-Series that includes Threat Prevention subscription, and Premium Support, 1
+year, Renewal",SOFTWARE
+PAN-VM-50-PERP-BND1-PREM-3YR,PALO,"Palo Alto Networks Perpetual Bundle (BND1) for VM-Series that includes VM-50, Threat Prevention subscription, and Premium
+Support, 3 year",SOFTWARE
+PAN-VM-50-PERP-BND1-PREM-3YR-R,PALO,"Palo Alto Networks Perpetual Bundle (BND1) for VM-Series that includes Threat Prevention subscription, and Premium Support, 3
+year, Renewal",SOFTWARE
+PAN-VM-50-PERP-BND1-PREM-5YR,PALO,"Palo Alto Networks Perpetual Bundle (BND1) for VM-Series that includes VM-50, Threat Prevention subscription, and Premium
+Support, 5 year",SOFTWARE
+PAN-VM-50-PERP-BND1-PREM-5YR-R,PALO,"Palo Alto Networks Perpetual Bundle (BND1) for VM-Series that includes Threat Prevention subscription, and Premium Support, 5
+year, Renewal",SOFTWARE
