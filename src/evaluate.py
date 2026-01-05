@@ -1,8 +1,14 @@
 import pandas as pd
+from pathlib import Path
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
 
+# Get the project root directory (parent of src/)
+SCRIPT_DIR = Path(__file__).resolve().parent
+PROJECT_ROOT = SCRIPT_DIR.parent
+DATA_DIR = PROJECT_ROOT / "data"
+
 # Load the data
-df = pd.read_csv("../data/dataset_classified_ground_truth_labeled.csv")
+df = pd.read_csv(DATA_DIR / "dataset_classified_ground_truth_labeled.csv")
 
 # Get the last two columns (PART_CATEGORY and GROUND_TRUTH)
 predictions = df.iloc[:, -2].str.upper().str.strip()  # PART_CATEGORY

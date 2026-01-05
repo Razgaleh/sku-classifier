@@ -2,6 +2,7 @@ import os
 import subprocess
 import pandas as pd
 from typing import Annotated
+from pathlib import Path
 
 from typing_extensions import TypedDict
 
@@ -13,6 +14,11 @@ from langchain_community.tools import BraveSearch
 from langgraph.prebuilt import ToolNode, tools_condition
 from langgraph.checkpoint.memory import InMemorySaver
 from langchain_nvidia_ai_endpoints import ChatNVIDIA
+
+# Get the project root directory (parent of src/)
+SCRIPT_DIR = Path(__file__).resolve().parent
+PROJECT_ROOT = SCRIPT_DIR.parent
+DATA_DIR = PROJECT_ROOT / "data"
 
 
 os.environ["NVIDIA_API_KEY"] = os.getenv("NVIDIA_API_KEY")    
@@ -118,9 +124,10 @@ graph = graph_builder.compile(checkpointer=memory)
 # Save the graph as PNG and open it
 try:
     png_data = graph.get_graph().draw_mermaid_png()
-    with open("../data/graph_diagram.png", "wb") as f:
+    graph_path = DATA_DIR / "graph_diagram.png"
+    with open(graph_path, "wb") as f:
         f.write(png_data)
-    print("Graph diagram saved as '../data/graph_diagram.png'")
+    print(f"Graph diagram saved as '{graph_path}'")
     
 except Exception as e:
     print(f"Could not generate graph diagram: {e}")
@@ -186,9 +193,10 @@ def main():
     
     if choice == "1":
         # Test on sample data
-        csv_path = input("Enter CSV file path (default: ../data/dataset.csv): ").strip()
+        default_csv = DATA_DIR / "dataset.csv"
+        csv_path = input(f"Enter CSV file path (default: {default_csv}): ").strip()
         if not csv_path:
-            csv_path = "../data/dataset.csv"
+            csv_path = str(default_csv)
         
         max_rows_input = input("How many rows do you want to process? (Enter a number): ").strip()
         max_rows = int(max_rows_input) if max_rows_input.isdigit() else 200
@@ -202,9 +210,10 @@ def main():
         
     elif choice == "2":
         # Process full CSV file
-        csv_path = input("Enter CSV file path (default: ../data/dataset.csv): ").strip()
+        default_csv = DATA_DIR / "dataset.csv"
+        csv_path = input(f"Enter CSV file path (default: {default_csv}): ").strip()
         if not csv_path:
-            csv_path = "../data/dataset.csv"
+            csv_path = str(default_csv)
         
         print("Processing all rows in the CSV file...")
         process_csv_classification(csv_path, max_rows=None)

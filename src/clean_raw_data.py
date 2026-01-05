@@ -1,7 +1,13 @@
 import pandas as pd
+from pathlib import Path
+
+# Get the project root directory (parent of src/)
+SCRIPT_DIR = Path(__file__).resolve().parent
+PROJECT_ROOT = SCRIPT_DIR.parent
+DATA_DIR = PROJECT_ROOT / "data"
 
 # Read the CSV file
-df = pd.read_csv('../data/raw_data.csv')
+df = pd.read_csv(DATA_DIR / 'raw_data.csv')
 
 # Set the column names
 df.columns = ['PART_SEG', 'PART_NUMBER', 'PART_DESCRIPTION','PART_PRICE']
@@ -15,7 +21,7 @@ df['PART_CATEGORY'] = ''
 df = df[['PART_NUMBER', 'PART_SEG', 'PART_DESCRIPTION','PART_CATEGORY']]
 
 # Save to updated CSV
-df.to_csv('../data/dataset.csv', index=False)
+df.to_csv(DATA_DIR / 'dataset.csv', index=False)
 
 
 print("Changed Column order: PART_NUMBER, PART_SEG, PART_DESCRIPTION, PART_CATEGORY")

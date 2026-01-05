@@ -6,8 +6,14 @@ import argparse
 import os
 import sys
 from typing import List, Optional
+from pathlib import Path
 import pdfplumber
 import pandas as pd
+
+# Get the project root directory (parent of src/)
+SCRIPT_DIR = Path(__file__).resolve().parent
+PROJECT_ROOT = SCRIPT_DIR.parent
+DATA_DIR = PROJECT_ROOT / "data"
 
 
 
@@ -100,7 +106,7 @@ def write_tables_to_csv(tables: List[pd.DataFrame], output: str, merge: bool) ->
 def main() -> None:
 	parser = argparse.ArgumentParser(description="Extract tables from a PDF into CSV.")
 	parser.add_argument("pdf", help="Path to the input PDF file")
-	parser.add_argument("-o", "--output", default="../data/raw_data.csv", help="Output CSV path or prefix (for multiple files)")
+	parser.add_argument("-o", "--output", default=str(DATA_DIR / "raw_data.csv"), help="Output CSV path or prefix (for multiple files)")
 	parser.add_argument("-p", "--pages", default=None, help="Pages to extract, e.g. '1', '1-3', '1,3,5'")
 	parser.add_argument("-s", "--split", action="store_true", help="Write each detected table to a separate CSV file")
 	args = parser.parse_args()
